@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Array Practice - Hobby edition</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #fdfbf7;
+    margin: 0;
+}
+
+.container{
+    width: 80%;
+    margin: 20px auto;
+}
+
+h1{
+    text-align: center;
+    color: #2e5a44;
+}
+
+p{
+    text-align: center;
+}
+
+.task{
+    background: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.task h3{
+    color: #2e5a44;
+}
+
+button{
+    padding: 8px 15px;
+    background: #2e5a44;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover{
+    background: #407a5d;
+}
+
+#output{
+    margin-top: 20px;
+    background: white;
+    border: 2px solid #2e5a44;
+    padding: 15px;
+    min-height: 150px;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>My Lifestyle Array Tracker</h1>
+<p>Click any button below to execute the specific array concept tracker.</p>
+
+<div class="task">
+<h3>1. Dream Travel Destinations</h3>
+<p>Display the first and last location on your travel bucket list.</p>
+<button onclick="travelTask()">Run Program</button>
+</div>
+
+<div class="task">
+<h3>2. Coding Languages To Learn</h3>
+<p>Display the total number of languages in the list using length.</p>
+<button onclick="languagesTask()">Run Program</button>
+</div>
+
+<div class="task">
+<h3>3. Weekly Music Playlist</h3>
+<p>Find and display the exact middle track of the playlist.</p>
+<button onclick="playlistTask()">Run Program</button>
+</div>
+
+<div class="task">
+<h3>4. High Score Tracker</h3>
+<p>Find the middle score in a numeric list using Math.floor().</p>
+<button onclick="scoresTask()">Run Program</button>
+</div>
+
+<div class="task">
+<h3>5. Weekend Hobbies</h3>
+<p>Display the very last hobby in your list using length - 1.</p>
+<button onclick="hobbiesTask()">Run Program</button>
+</div>
+
+<div class="task">
+<h3>6. Quick Check-In</h3>
+<p>Take input from the user about their primary daily goal.</p>
+<button onclick="goalTask()">Run Program</button>
+</div>
+
+<div id="output">
+Output will appear here...
+</div>
+
+</div>
+
+<script>
+// Helper functions to manage the display panel
+function print(msg){
+    document.getElementById("output").innerHTML += msg + "<br>";
+}
+
+function clearOutput(){
+    document.getElementById("output").innerHTML = "";
+}
+
+// CONCEPT 1: Accessing indices 0 and length-1
+function travelTask(){
+    clearOutput();
+    let destinations = ["Tokyo", "Paris", "New York", "Rome", "Cape Town"];
+    
+    print("Destinations: " + destinations.join(" ➔ "));
+    print("Starting point (First): " + destinations[0]);
+    print("Final stop (Last): " + destinations[destinations.length - 1]);
+}
+
+// CONCEPT 2: Counting total elements (.length)
+function languagesTask(){
+    clearOutput();
+    let languages = ["JavaScript", "Python", "Go", "Rust"];
+    
+    print("Stack list: " + languages.join(", "));
+    print("Total Languages Tracked: " + languages.length);
+}
+
+// CONCEPT 3: Identifying the middle string item
+function playlistTask(){
+    clearOutput();
+    let tracks = ["Song A", "Song B", "Song C", "Song D", "Song E"];
+    
+    // Finds index 2 out of 5 elements
+    let midIndex = Math.floor(tracks.length / 2); 
+    
+    print("Current Queue: " + tracks.join(" | "));
+    print("Featured Mid-track: " + tracks[midIndex]);
+}
+
+// CONCEPT 4: Identifying the middle number item
+function scoresTask(){
+    clearOutput();
+    let scores = [1500, 2400, 3100, 4200, 5000, 6800, 7500];
+    
+    // Math.floor handles calculation dynamically
+    let middle = Math.floor(scores.length / 2);
+    
+    print("All Registered Scores: " + scores.join(", "));
+    print("Median Benchmarked Score: " + scores[middle]);
+}
+
+// CONCEPT 5: Target specific ending items mathematically
+function hobbiesTask(){
+    clearOutput();
+    let hobbies = ["Reading", "Hiking", "Photography", "Cooking", "Gardening"];
+    
+    print("Registered Hobbies: " + hobbies.join(", "));
+    print("End-of-list Activity: " + hobbies[hobbies.length - 1]);
+}
+
+// CONCEPT 6: Prompt window string capture and conditional validation
+function goalTask(){
+    clearOutput();
+    let standardGoal = prompt("What is your top priority goal today?");
+    
+    // Checks for empty entries or cancel action
+    if(standardGoal === "" || standardGoal === null){
+        print("No daily priority set. Remember to take it easy!");
+    } else {
+        print("🎯 Today's Action Plan: " + standardGoal);
+    }
+}
+</script>
+
+</body>
+</html>
