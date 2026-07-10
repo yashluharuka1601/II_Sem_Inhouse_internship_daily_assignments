@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Directory</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background-color:#f2f2f2;
+    margin:0;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#003366;
+    margin-top:20px;
+}
+
+p{
+    text-align:center;
+}
+
+#search{
+    width:100%;
+    padding:10px;
+    margin:20px 0;
+    font-size:16px;
+}
+
+.card{
+    background:white;
+    border:1px solid gray;
+    border-radius:5px;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+.card h2{
+    color:#003366;
+}
+
+button{
+    background:#003366;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0055aa;
+}
+
+.details{
+    display:none;
+    margin-top:10px;
+    border-top:1px solid #ccc;
+    padding-top:10px;
+}
+
+.footer{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Directory</h1>
+
+<p>Search students and view their details.</p>
+
+<input type="text" id="search" placeholder="Search Student..." onkeyup="searchStudent()">
+
+<div class="card">
+
+<h2>Tapur</h2>
+<p>computer science  - First Year</p>
+
+<button onclick="toggle(this)">Show Details</button>
+
+<div class="details">
+<p><b>Roll No:</b> 39</p>
+<p><b>Email:</b> tapur34@gmail.com</p>
+<p><b>Phone:</b> 8765439088</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Yash </h2>
+<p>Information Technology</p>
+
+<button onclick="toggle(this)">Show Details</button>
+
+<div class="details">
+<p><b>Roll No:</b> 47</p>
+<p><b>Email:</b> Yash76@gmail.com</p>
+<p><b>Phone:</b> 7891234567</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>utsav</h2>
+<p>Electronics Engineering</p>
+
+<button onclick="toggle(this)">Show Details</button>
+
+<div class="details">
+<p><b>Roll No:</b> 60</p>
+<p><b>Email:</b> utsav123@gmail.com</p>
+<p><b>Phone:</b> 8912345678</p>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Vikram</h2>
+<p>Artificial Intelligence</p>
+
+<button onclick="toggle(this)">Show Details</button>
+
+<div class="details">
+<p><b>Roll No:</b> 20</p>
+<p><b>Email:</b> vikram73@gmail.com</p>
+<p><b>Phone:</b> 9873456128</p>
+</div>
+
+</div>
+
+<div class="footer">
+Student Directory Project - Web Development Lab
+</div>
+
+</div>
+
+<script>
+
+function toggle(button){
+
+var details = button.nextElementSibling;
+
+if(details.style.display=="block"){
+    details.style.display="none";
+    button.innerHTML="Show Details";
+}
+else{
+    details.style.display="block";
+    button.innerHTML="Hide Details";
+}
+
+}
+
+function searchStudent(){
+
+var input=document.getElementById("search").value.toLowerCase();
+
+var cards=document.getElementsByClassName("card");
+
+for(var i=0;i<cards.length;i++){
+
+var name=cards[i].getElementsByTagName("h2")[0].innerHTML.toLowerCase();
+
+if(name.indexOf(input)>-1){
+cards[i].style.display="block";
+}
+else{
+cards[i].style.display="none";
+}
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
