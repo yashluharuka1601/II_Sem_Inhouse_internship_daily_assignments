@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash Furniture - Login</title>
+
+<style>
+/* Modern Fonts Integration */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(135deg, #1e2022, #2c3033);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header Redesign */
+header{
+    background: #ffffff;
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.logo{
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #1e2022;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    color: #d4af37; /* Elegant Premium Gold */
+}
+
+nav a{
+    text-decoration: none;
+    color: #555;
+    margin-left: 35px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover{
+    color: #d4af37;
+}
+
+/* Underline Animation Effect */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #d4af37;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Login Container Redesign */
+.container{
+    width: 440px;
+    background: #ffffff;
+    margin: 50px auto;
+    padding: 45px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.container h2{
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    color: #1e2022;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+label{
+    display: block;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+}
+
+input:focus{
+    border-color: #d4af37;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+    outline: none;
+}
+
+/* Options/Alignment Refinement */
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    cursor: pointer;
+    font-weight: 400;
+    color: #666;
+}
+
+.options input[type="checkbox"] {
+    accent-color: #d4af37;
+    transform: scale(1.1);
+}
+
+.options a{
+    text-decoration: none;
+    color: #d4af37;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.options a:hover{
+    color: #b89123;
+}
+
+/* Premium Button Setup */
+button{
+    width: 100%;
+    padding: 14px;
+    margin-top: 35px;
+    background: #1e2022;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+button:hover{
+    background: #d4af37;
+    color: #1e2022;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active{
+    transform: translateY(0);
+}
+
+.signup{
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #666;
+}
+
+.signup a{
+    text-decoration: none;
+    color: #d4af37;
+    font-weight: 600;
+    margin-left: 4px;
+    transition: color 0.2s ease;
+}
+
+.signup a:hover{
+    color: #b89123;
+}
+
+/* Footer Redesign */
+footer{
+    background: #ffffff;
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 14px;
+    border-top: 1px solid #eee;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.02);
+}
+
+/* Responsive Scaling optimization */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 30px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 0 12px;
+    }
+    .container {
+        width: 90%;
+        max-width: 400px;
+        margin: 30px auto;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🪑 Yash <span>Furniture</span></div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Products</a>
+<a href="#">Categories</a>
+<a href="#">Contact</a>
+</nav>
+
+</header>
+
+<div class="container">
+
+<h2>Welcome Back</h2>
+
+<form autocomplete="off">
+
+<label>Email Address</label>
+<input type="email" placeholder="Enter your registered email" required>
+
+<label>Password</label>
+<input type="password" placeholder="Enter your password" required>
+
+<div class="options">
+
+<label>
+<input type="checkbox"> Remember Me
+</label>
+
+<a href="#">Forgot Password?</a>
+
+</div>
+
+<button type="submit">Login</button>
+
+<div class="signup">
+<p>New to Yash Furniture?<a href="#">Create Account</a></p>
+</div>
+
+</form>
+
+</div>
+
+<footer>
+
+<p>© 2026 Yash Furniture | Crafting Comfort, Designing Luxury</p>
+
+</footer>
+
+</body>
+</html>
