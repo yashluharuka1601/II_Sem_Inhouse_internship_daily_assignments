@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash Furniture - Login</title>
+
+<style>
+/* Modern Fonts Integration */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Color Variables for Theme Switching */
+:root {
+    --bg-gradient: linear-gradient(135deg, #f4f5f7, #e2e8f0);
+    --card-bg: #ffffff;
+    --header-footer-bg: #ffffff;
+    --text-main: #1e2022;
+    --text-muted: #666666;
+    --input-border: #dddddd;
+    --input-bg: #fdfdfd;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --gold: #d4af37;
+    --gold-hover: #b89123;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    --bg-gradient: linear-gradient(135deg, #1e2022, #2c3033);
+    --card-bg: #ffffff;
+    --header-footer-bg: #ffffff;
+    --text-main: #1e2022;
+    --text-muted: #666666;
+    --input-border: #ddd;
+    --input-bg: #fdfdfd;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    
+    /* Optional: If you want the inner card to go dark as well, uncomment below: */
+    --card-bg: #25282a;
+    --text-main: #ffffff;
+    --text-muted: #a0aec0;
+    --input-bg: #1e2022;
+    --input-border: #444444;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body{
+    background: var(--bg-gradient);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header Setup */
+header{
+    background: var(--header-footer-bg);
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.logo{
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a{
+    text-decoration: none;
+    color: var(--text-muted);
+    margin-left: 35px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+nav a:hover{
+    color: var(--gold);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--text-main);
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.05);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+body.dark-mode .theme-toggle {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Login Container */
+.container{
+    width: 440px;
+    background: var(--card-bg);
+    margin: 50px auto;
+    padding: 45px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.container h2{
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-main);
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+label{
+    display: block;
+    margin-top: 20px;
+    font-weight: 500;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    font-size: 15px;
+    background: var(--input-bg);
+    color: var(--text-main);
+}
+
+input:focus{
+    border-color: var(--gold);
+    background: var(--card-bg);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+    outline: none;
+}
+
+/* Options Layout */
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    cursor: pointer;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+.options input[type="checkbox"] {
+    accent-color: var(--gold);
+    transform: scale(1.1);
+}
+
+.options a{
+    text-decoration: none;
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.options a:hover{
+    color: var(--gold-hover);
+}
+
+/* Button Configuration */
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 35px;
+    background: #1e2022;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body.dark-mode .login-btn {
+    background: var(--gold);
+    color: #1e2022;
+}
+
+.login-btn:hover{
+    background: var(--gold);
+    color: #1e2022;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+body.dark-mode .login-btn:hover {
+    background: #ffffff;
+    color: #1e2022;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.login-btn:active{
+    transform: translateY(0);
+}
+
+.signup{
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.signup a{
+    text-decoration: none;
+    color: var(--gold);
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.signup a:hover{
+    color: var(--gold-hover);
+}
+
+/* Footer Setup */
+footer{
+    background: var(--header-footer-bg);
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--input-border);
+}
+
+/* Responsive Optimization */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 30px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav a {
+        margin: 0 12px;
+    }
+    .container {
+        width: 90%;
+        max-width: 400px;
+        margin: 30px auto;
+    }
+}
+</style>
+
+</head>
+
+<!-- Standard mode initialized default theme. Class changes with trigger toggle -->
+<body class="dark-mode">
+
+<header>
+
+<div class="logo">🪑 Yash <span>Furniture</span></div>
+
+<div class="nav-container">
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Categories</a>
+        <a href="#">Contact</a>
+    </nav>
+    
+    <!-- Light/Dark interactive Mode Toggle Icon Button -->
+    <button class="theme-toggle" id="themeToggleBtn" title="Toggle Theme">☀️</button>
+</div>
+
+</header>
+
+<div class="container">
+
+<h2>Welcome Back</h2>
+
+<form autocomplete="off">
+
+<label>Email Address</label>
+<input type="email" placeholder="Enter your registered email" required>
+
+<label>Password</label>
+<input type="password" placeholder="Enter your password" required>
+
+<div class="options">
+
+<label>
+<input type="checkbox"> Remember Me
+</label>
+
+<a href="#">Forgot Password?</a>
+
+</div>
+
+<button type="submit" class="login-btn">Login</button>
+
+<div class="signup">
+<p>New to Yash Furniture?<a href="#">Create Account</a></p>
+</div>
+
+</form>
+
+</div>
+
+<footer>
+
+<p>© 2026 Yash Furniture | Crafting Comfort, Designing Luxury</p>
+
+</footer>
+
+<script>
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const bodyElement = document.body;
+
+    themeToggleBtn.addEventListener('click', () => {
+        // Toggle the dark-mode class directly on the body
+        bodyElement.classList.toggle('dark-mode');
+        
+        // Dynamic visual update of the icon indicator inside button component
+        if (bodyElement.classList.contains('dark-mode')) {
+            themeToggleBtn.textContent = '☀️'; // Sun icon for switching back to light mode
+        } else {
+            themeToggleBtn.textContent = '🌙'; // Moon icon for switching over to dark mode
+        }
+    });
+</script>
+
+</body>
+</html>
